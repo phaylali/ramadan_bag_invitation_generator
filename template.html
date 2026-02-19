@@ -1,0 +1,160 @@
+<div class="invitation-layout">
+    <div class="invitation-header">
+        <div class="header-right">
+            المملكة المغربية<br>
+            وزارة الداخلـــــــية<br>
+            اقليم تطــــــــوان<br>
+            باشوية واد لــــــو
+        </div>
+        <div class="header-center">
+            <h1>دعوة استلام قفة رمضان</h1>
+        </div>
+    </div>
+
+    <div class="invitation-body">
+        <div class="intro-recipient-row">
+            <p class="recipient-line">إلى السيد(ة): <strong>{{name}}</strong></p>
+            <p class="intro-text">ندعوكم لاستلام قفة رمضان الخاصة بكم.</p>
+        </div>
+
+        <div class="details-section">
+            <div class="details-grid">
+                <div class="detail-row">
+                    <span class="label">رقم البطاقة الوطنية:</span>
+                    <span class="value">{{cin}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">المعرف الرقمي المدني و الاجتماعي:</span>
+                    <span class="value">{{idcs}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">تاريخ الازدياد:</span>
+                    <span class="value">{{birth}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">العنوان:</span>
+                    <span class="value">{{adress}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="label">الرقم الترتيبي:</span>
+                    <span class="value">{{order_no}}</span>
+                </div>
+            </div>
+            <div class="signature-box">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .invitation-layout {
+        font-family: 'Cairo', sans-serif;
+        padding: 1mm;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        box-sizing: border-box;
+    }
+
+    .invitation-header {
+        display: flex;
+        border-bottom: 2px solid #000;
+        padding-bottom: 1mm;
+        margin-bottom: 1mm;
+    }
+
+    .header-right {
+        width: 40mm;
+        text-align: right;
+        font-size: 10pt;
+        line-height: 1.4;
+    }
+
+    .header-center {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .header-center h1 {
+        font-family: 'Arabswell', serif;
+        font-size: 24pt;
+        margin: 0;
+
+    }
+
+    .invitation-body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .intro-recipient-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 5mm;
+        border-bottom: 1px dashed #ccc;
+        padding-bottom: 2mm;
+    }
+
+    .recipient-line {
+        font-size: 14pt;
+        margin: 0;
+    }
+
+    .intro-text {
+        font-size: 11pt;
+        margin: 0;
+        color: #333;
+    }
+
+    .details-section {
+        display: flex;
+        flex-grow: 1;
+        gap: 5mm;
+    }
+
+    .details-grid {
+        width: 66%;
+        display: flex;
+        flex-direction: column;
+        gap: 2mm;
+    }
+
+    .detail-row {
+        display: flex;
+        font-size: 11pt;
+        align-items: flex-start;
+        margin-bottom: 1.5mm;
+    }
+
+    .detail-row .label {
+        font-weight: bold;
+        white-space: nowrap;
+        color: #444;
+        margin-left: 3mm;
+    }
+
+    .detail-row .value {
+        flex-grow: 1;
+        color: #000;
+    }
+
+    .signature-box {
+        width: 33%;
+        border: 1px solid #000;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 2mm;
+    }
+
+    .signature-box p {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+</style>
