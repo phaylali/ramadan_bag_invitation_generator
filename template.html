@@ -4,9 +4,9 @@
     <div class="invitation-header">
         <div class="header-right">
             المملكة المغربية<br>
-            وزارة الداخلــــــــــية<br>
-            اقليم تطــــــــــوان<br>
-            باشوية واد لــــــــو
+            وزارة الداخلــــــــــــــية<br>
+            اقليم تطـــــــــــــــــوان<br>
+            باشوية واد لــــــــــــو
         </div>
         <div class="header-center">
             <h1>دعوة استلام قفة رمضان</h1>
@@ -23,19 +23,19 @@
             <div class="details-grid">
                 <div class="detail-row">
                     <span class="label">رقم البطاقة الوطنية:</span>
-                    <span class="value">{{cin}}</span>
+                    <span class="value"> {{cin}} </span>
                 </div>
                 <div class="detail-row">
                     <span class="label">المعرف الرقمي المدني و الاجتماعي:</span>
-                    <span class="value">{{idcs}}</span>
+                    <span class="value"> {{idcs}} </span>
                 </div>
                 <div class="detail-row">
                     <span class="label">تاريخ الازدياد:</span>
-                    <span class="value">{{birth}}</span>
+                    <span class="value"> {{birth}} </span>
                 </div>
                 <div class="detail-row">
                     <span class="label">العنوان:</span>
-                    <span class="value">{{adress}}</span>
+                    <span class="value"> {{adress}} </span>
                 </div>
                 <div class="signature-line"></div>
                 <div class="detail-row" style="margin-top: 2mm;">
@@ -98,6 +98,7 @@
         margin-bottom: 3mm;
         border-bottom: 1px dashed #ccc;
         padding-bottom: 2mm;
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
@@ -129,6 +130,7 @@
     .detail-row .label {
         font-weight: 500;
         color: #444;
+        margin-left: 10px;
     }
 
     .detail-row .value {
