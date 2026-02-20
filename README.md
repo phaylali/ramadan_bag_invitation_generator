@@ -1,29 +1,31 @@
-# 🌙 مولد دعوات قفة رمضان (Ramadan Bag Invitation Generator)
+# 🌙 Ramadan Bag Invitation Generator (مولد دعوات قفة رمضان)
 
-تطبيق بسيط لتوليد دعوات استلام قفة رمضان من ملف إكسيل مع دعم كامل للغة العربية وتنسيق PDF جاهز للطباعة.
+[English](./README.md) | [العربية](./README_AR.md) | [ⵣⴰⵡⴰⵔⵉⵢⵏ](./README_ZGH.md)
 
-## 📋 متطلبات الإعداد
+A simple application for generating Ramadan food basket distribution invitations from Excel files with full Arabic support and print-ready PDF formatting.
 
-قبل رفع ملف الإكسيل، يرجى التأكد من الخطوات التالية لضمان عمل التطبيق بشكل صحيح:
+## 📋 Excel Preparation Requirements
 
-1.  **صيغة الملف**: يجب أن يكون الملف بصيغة **.xlsx**. إذا كان لديك ملف بصيغة `.xls` قديمة، يرجى فتحه في Excel وحفظه بصيغة `Excel Workbook (.xlsx)`.
-2.  **تنسيق الصفوف**:
-    - تأكد أن **الصف الأول** يحتوي على أسماء الأعمدة (العناوين).
-    - إذا كان هناك صف أول فارغ، يرجى حذفه تماماً.
-3.  **بيانات التاريخ**: يفضل أن يكون عمود "تاريخ الازدياد" منسقاً كـ `Date` في إكسيل، وسيقوم التطبيق تلقائياً بتحويله إلى صيغة `YYYY-MM-DD`.
+Before uploading your Excel file, please ensure the following to ensure the application works correctly:
 
-## 🚀 كيفية الاستخدام
+1.  **File Format**: The file must be in **.xlsx** format. If you have an old `.xls` file, please open it in Excel and save it as `Excel Workbook (.xlsx)`.
+2.  **Row Formatting**:
+    - Make sure the **first row** contains column headers.
+    - If there's an empty first row, please delete it completely.
+3.  **Date Data**: It is recommended that the "Birth Date" column be formatted as `Date` in Excel, and the application will automatically convert it to `YYYY-MM-DD` format.
 
-1. قم بتشغيل التطبيق عبر `bun run dev`.
-2. افتح `http://localhost:3000` في المتصفح.
-3. اختر ملف الإكسيل الجاهز.
-4. قم بربط الحقول المطلوبة (الاسم، البطاقة الوطنية، إلخ) بالأعمدة المقابلة لها في ملفك.
-5. اضغط على "توليد المعاينة".
-6. اضغط على "طباعة" لاستخدام الطباعة المباشرة من المتصفح.
+## 🚀 How to Use
 
-## 🛠️ التقنيات المستخدمة
+1. Run the application via `bun run dev`.
+2. Open `http://localhost:3000` in your browser.
+3. Select your prepared Excel file.
+4. Map the required fields (Name, National ID, etc.) to the corresponding columns in your file.
+5. Click "توليد المعاينة" (Generate Preview).
+6. Click "طباعة" (Print) to use direct browser printing.
 
-- **Bun & Hono**: للخادم الأساسي (Backend).
-- **Puppeteer**: لتوليد ملفات PDF (Server-side PDF).
-- **XLSX (SheetJS)**: لمعالجة ملفات الإكسيل.
-- **Tajawal & Samir.Khouaja.Maghribi**: خطوط عربية متميزة.
+## 🛠️ Technologies Used
+
+- **Bun & Hono**: For the backend server.
+- **Puppeteer**: For PDF generation (Server-side PDF).
+- **XLSX (SheetJS)**: For Excel file processing.
+- **Tajawal & Samir.Khouaja.Maghribi**: Premium Arabic fonts.
