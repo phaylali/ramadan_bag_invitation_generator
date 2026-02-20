@@ -23,19 +23,19 @@
             <div class="details-grid">
                 <div class="detail-row">
                     <span class="label">رقم البطاقة الوطنية:</span>
-                    <span class="value"> {{cin}} </span>
+                    <span class="value">{{cin}}</span>
                 </div>
                 <div class="detail-row">
                     <span class="label">المعرف الرقمي المدني و الاجتماعي:</span>
-                    <span class="value"> {{idcs}} </span>
+                    <span class="value">{{idcs}}</span>
                 </div>
                 <div class="detail-row">
                     <span class="label">تاريخ الازدياد:</span>
-                    <span class="value"> {{birth}} </span>
+                    <span class="value">{{birth}}</span>
                 </div>
                 <div class="detail-row">
                     <span class="label">العنوان:</span>
-                    <span class="value"> {{adress}} </span>
+                    <span class="value">{{adress}}</span>
                 </div>
                 <div class="signature-line"></div>
                 <div class="detail-row" style="margin-top: 2mm;">
@@ -50,6 +50,13 @@
 </div>
 
 <style>
+    @font-face {
+        font-family: 'Arabswell';
+        src: url('/fonts/Samir.Khouaja.Maghribi.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
     .invitation-layout {
         font-family: 'Tajawal', sans-serif;
         font-weight: 400;
@@ -82,7 +89,7 @@
     }
 
     .header-center h1 {
-        font-family: 'Tajawal', serif;
+        font-family: 'Arabswell', serif;
         font-size: 20pt;
         font-weight: 700;
         margin: 0;
@@ -95,12 +102,11 @@
     }
 
     .intro-recipient-row {
+        display: flex;
+        justify-content: space-between;
         margin-bottom: 3mm;
         border-bottom: 1px dashed #ccc;
         padding-bottom: 2mm;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
     }
 
     .recipient-line {
@@ -130,7 +136,7 @@
     .detail-row .label {
         font-weight: 500;
         color: #444;
-        margin-left: 10px;
+        margin-left: 5px;
     }
 
     .detail-row .value {
@@ -152,7 +158,7 @@
     }
 
     .signature-line {
-        
+        margin-top: 5mm;
         border-bottom: 1px solid #000;
         width: 80%;
     }

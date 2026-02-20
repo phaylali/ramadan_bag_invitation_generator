@@ -17,8 +17,8 @@ export const Theme = {
     },
     fonts: {
         heading: "'Arabswell', serif",
-        body: "'Cairo', sans-serif",
-        arabic: "'Cairo', sans-serif"
+        body: "'Tajawal', sans-serif",
+        arabic: "'Tajawal', sans-serif"
     }
 };
 
@@ -26,7 +26,7 @@ export function generateStyles(): string {
     return `
         @font-face {
             font-family: 'Arabswell';
-            src: url('/fonts/arabswell_1.ttf') format('truetype');
+            src: url('/fonts/Samir.Khouaja.Maghribi.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }

@@ -91,8 +91,8 @@ app.get('/client.js', async (c) => {
   return c.text(content, 200, { 'Content-Type': 'application/javascript' });
 });
 
-app.get('/fonts/arabswell_1.ttf', async (c) => {
-  const content = await readFile(join(process.cwd(), 'fonts/arabswell_1.ttf'));
+app.get('/fonts/Samir.Khouaja.Maghribi.ttf', async (c) => {
+  const content = await readFile(join(process.cwd(), 'fonts/Samir.Khouaja.Maghribi.ttf'));
   return c.body(content, 200, { 'Content-Type': 'font/ttf' });
 });
 
