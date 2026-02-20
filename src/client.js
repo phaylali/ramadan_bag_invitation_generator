@@ -137,67 +137,9 @@ async function fetchTemplate() {
     return await res.text();
 }
 
-async function downloadPDF() {
-    const btn = document.querySelector('.btn-download');
-    const originalText = btn.textContent;
-    btn.textContent = '...جاري التحميل';
-    btn.disabled = true;
-
-    try {
-        const formatValue = (val, isBirth = false) => {
-            if (val === null || val === undefined) return '';
-            if (val instanceof Date) {
-                const y = val.getFullYear();
-                const m = String(val.getMonth() + 1).padStart(2, '0');
-                const d = String(val.getDate()).padStart(2, '0');
-                return `${y}-${m}-${d}`;
-            }
-            if (isBirth && typeof val === 'number') {
-                const date = XLSX.SSF.parse_date_code(val);
-                return `${date.y}-${String(date.m).padStart(2, '0')}-${String(date.d).padStart(2, '0')}`;
-            }
-            return String(val);
-        };
-
-        const dataRows = excelData.map((row, index) => ({
-            name: formatValue(row[columnMapping.name]),
-            cin: formatValue(row[columnMapping.cin]),
-            idcs: formatValue(row[columnMapping.idcs]),
-            birth: formatValue(row[columnMapping.birth], true),
-            adress: formatValue(row[columnMapping.adress]),
-            order_no: index + 1
-        }));
-
-        const response = await fetch('/generate-pdf-v2', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ data: dataRows })
-        });
-
-        if (!response.ok) throw new Error('فشل توليد ملف PDF');
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'دعوات_القفة.pdf';
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        document.body.removeChild(a);
-
-    } catch (err) {
-        console.error('PDF Error:', err);
-        alert('حدث خطأ أثناء تحميل الملف.');
-    } finally {
-        btn.textContent = originalText;
-        btn.disabled = false;
-    }
-}
 function printPDF() {
     window.print();
 }
 
 window.generatePreview = generatePreview;
-window.downloadPDF = downloadPDF;
 window.printPDF = printPDF;
