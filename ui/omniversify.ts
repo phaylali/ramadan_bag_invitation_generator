@@ -16,7 +16,7 @@ export const Theme = {
         border: 'rgba(212, 175, 55, 0.3)',
     },
     fonts: {
-        heading: "'Arabswell', serif",
+        heading: "'Maghribi', serif",
         body: "'Tajawal', sans-serif",
         arabic: "'Tajawal', sans-serif"
     }
@@ -25,7 +25,7 @@ export const Theme = {
 export function generateStyles(): string {
     return `
         @font-face {
-            font-family: 'Arabswell';
+            font-family: 'Maghribi';
             src: url('/fonts/Samir.Khouaja.Maghribi.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;

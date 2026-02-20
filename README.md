@@ -27,4 +27,4 @@
 - **Bun & Hono**: للخادم الأساسي (Backend).
 - **Puppeteer**: لتوليد ملفات PDF احترافية (Server-side PDF).
 - **XLSX (SheetJS)**: لمعالجة ملفات الإكسيل.
-- **Cairo & Arabswell**: خطوط عربية متميزة.
+- **Cairo & Maghribi**: خطوط عربية متميزة.
