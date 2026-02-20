@@ -144,31 +144,34 @@ async function downloadPDF() {
     btn.disabled = true;
 
     try {
-        const previewHtml = document.getElementById('preview-container').innerHTML;
-        const styles = Array.from(document.querySelectorAll('style')).map(s => s.innerHTML).join('\n');
+        const formatValue = (val, isBirth = false) => {
+            if (val === null || val === undefined) return '';
+            if (val instanceof Date) {
+                const y = val.getFullYear();
+                const m = String(val.getMonth() + 1).padStart(2, '0');
+                const d = String(val.getDate()).padStart(2, '0');
+                return `${y}-${m}-${d}`;
+            }
+            if (isBirth && typeof val === 'number') {
+                const date = XLSX.SSF.parse_date_code(val);
+                return `${date.y}-${String(date.m).padStart(2, '0')}-${String(date.d).padStart(2, '0')}`;
+            }
+            return String(val);
+        };
 
-        // Construct the full HTML to be rendered by Puppeteer
-        const fullHtml = `
-            <!DOCTYPE html>
-            <html lang="ar" dir="rtl">
-            <head>
-                <meta charset="UTF-8">
-                <style>
-                    ${styles}
-                    body { background: white !important; margin: 0; padding: 0; }
-                    .invitation-page { margin: 0 !important; box-shadow: none !important; border: none !important; }
-                </style>
-            </head>
-            <body>
-                ${previewHtml}
-            </body>
-            </html>
-        `;
+        const dataRows = excelData.map((row, index) => ({
+            name: formatValue(row[columnMapping.name]),
+            cin: formatValue(row[columnMapping.cin]),
+            idcs: formatValue(row[columnMapping.idcs]),
+            birth: formatValue(row[columnMapping.birth], true),
+            adress: formatValue(row[columnMapping.adress]),
+            order_no: index + 1
+        }));
 
-        const response = await fetch('/generate-pdf', {
+        const response = await fetch('/generate-pdf-v2', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ html: fullHtml })
+            body: JSON.stringify({ data: dataRows })
         });
 
         if (!response.ok) throw new Error('فشل توليد ملف PDF');
@@ -185,13 +188,12 @@ async function downloadPDF() {
 
     } catch (err) {
         console.error('PDF Error:', err);
-        alert('حدث خطأ أثناء تحميل الملف. يرجى تجربة الطباعة مباشرة.');
+        alert('حدث خطأ أثناء تحميل الملف.');
     } finally {
         btn.textContent = originalText;
         btn.disabled = false;
     }
 }
-
 function printPDF() {
     window.print();
 }

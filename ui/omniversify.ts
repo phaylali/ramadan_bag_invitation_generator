@@ -153,26 +153,28 @@ export function generateStyles(): string {
             min-height: 500px;
             border-radius: 8px;
             overflow-y: auto;
+            overflow-x: hidden;
             direction: ltr; /* PDF layout usually ltr container for RTL content */
         }
 
         .invitation-page {
-            width: 208mm; /* Slightly less than 210mm for safe printable area */
+            width: 210mm;
             min-height: 297mm;
-            padding: 2mm;
-            margin: 0 auto 2rem auto;
+            padding: 10mm;
+            margin: 0 auto 10mm auto;
             background: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             display: flex;
             flex-direction: column;
-            gap: 1mm;
+            gap: 8mm;
+            box-sizing: border-box;
         }
 
         .invitation-card {
             width: 100%;
-            height: 94mm; /* Increased from 90mm to fill A4 more effectively */
+            min-height: 90mm;
             border: 2px solid #D4AF37;
-            padding: 2mm; 
+            padding: 3mm; 
             box-sizing: border-box;
             background-color: white;
             color: black;
@@ -181,21 +183,30 @@ export function generateStyles(): string {
             text-align: right;
             overflow: hidden;
             page-break-inside: avoid;
+            margin-bottom: 0;
         }
 
         /* Print Styles */
         @media print {
             @page {
                 size: A4;
-                margin: 0 !important;
+                margin: 0;
             }
-            html, body {
+            html {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 0;
+            }
+            body {
                 width: 210mm;
                 height: 297mm;
                 margin: 0 !important;
                 padding: 0 !important;
                 background: white !important;
                 overflow: visible !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
             }
             header, footer, .card, #mapping-section, .action-btns, .instructions {
                 display: none !important;
@@ -224,22 +235,41 @@ export function generateStyles(): string {
             #preview-section h2 {
                 display: none !important;
             }
+            #preview-container {
+                padding: 0 !important;
+                background: white !important;
+                overflow: visible !important;
+            }
             .invitation-page {
-                margin: 0 !important; /* Force to the edge to let browser/puppeteer margins handle it */
+                width: 210mm !important;
+                height: 297mm !important;
+                min-height: 297mm !important;
+                margin: 0 !important;
+                padding: 8mm !important;
                 box-shadow: none !important;
                 border: none !important;
                 page-break-after: always;
                 page-break-inside: avoid;
-                width: 208mm !important;
-                height: 297mm !important;
-                padding: 0 !important;
+                page-break-before: always;
                 position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                gap: 5mm !important;
+            }
+            .invitation-page:first-child {
+                page-break-before: auto;
             }
             .invitation-card {
+                width: 100% !important;
+                height: auto !important;
+                min-height: 90mm;
                 box-shadow: none !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
                 border: 2px solid #D4AF37 !important;
+                page-break-inside: avoid;
+                margin-bottom: 0 !important;
+                padding: 2mm !important;
             }
         }
         

@@ -3,6 +3,7 @@ import { createLayout } from '../ui/omniversify'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import puppeteer from 'puppeteer'
+import { PDFGenerator, InvitationData } from './generator'
 
 const app = new Hono()
 
@@ -28,10 +29,27 @@ app.post('/generate-pdf', async (c) => {
 
   await browser.close();
 
-  return c.body(pdfBuffer, 200, {
+  return c.body(pdfBuffer as any, 200, {
     'Content-Type': 'application/pdf',
     'Content-Disposition': 'attachment; filename="invitations.pdf"'
   });
+});
+
+app.post('/generate-pdf-v2', async (c) => {
+  try {
+    const { data } = await c.req.json() as { data: InvitationData[] };
+
+    const generator = new PDFGenerator();
+    const pdfBuffer = await generator.generate(data);
+
+    return c.body(pdfBuffer as any, 200, {
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': 'attachment; filename="invitations_v2.pdf"'
+    });
+  } catch (error: any) {
+    console.error('PDF Generation Error:', error);
+    return c.json({ error: error.message }, 500);
+  }
 });
 
 app.get('/', (c) => {
